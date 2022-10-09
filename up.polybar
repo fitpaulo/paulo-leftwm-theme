@@ -9,11 +9,6 @@ if [ -f "/tmp/leftwm-theme-down" ]; then
 fi
 ln -s ${SCRIPTPATH}/down /tmp/leftwm-theme-down
 
-# launch protonvpn if available
-if [ -x "$(command -v protonvpn)" ]; then
-  pgrep protonvpn > /dev/null || protonvpn &
-fi
-
 #boot compton or picom if it exists
 if ! pgrep -x "picom" > /dev/null
 then
@@ -26,7 +21,6 @@ fi
 #set the theme.ron config
 leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
 
-
 #set background
 if [ -x "$(command -v feh)" ]; then
   #feh --bg-scale --randomize ~/Pictures/wallpapers/halloween/*
@@ -36,6 +30,11 @@ fi
 # extra utils to make this theme a little more homey
 if [ -x "$(command -v dunst)" ]; then
   dunst -config ~/.config/dunst/dunstrc &
+fi
+
+# launch protonvpn if available
+if [ -x "$(command -v protonvpn)" ]; then
+  pgrep protonvpn > /dev/null || protonvpn &
 fi
 
 # set up autolock if it is available
