@@ -2,7 +2,7 @@
            :geometry (geometry :x "0%"
                                :y "0%"
                                :width "100%"
-                               :height "20px"
+                               :height "30px"
                                :anchor "top center")
            :stacking "fg"
            :reserve (struts :distance "50px" :side "top")
@@ -67,6 +67,9 @@
     (metric :value {(EWW_DISK["/"].used / EWW_DISK["/"].total) * 100}
             :label "disk"
             :tooltip "${round(EWW_DISK['/'].used / EWW_DISK['/'].total, 4) * 100}%")
+    (metric :value { battery == "" ? 0 : battery }
+            :label {battery-status == "Charging" ? "bat(+)" : "bat"}
+            :tooltip "${battery}%")))
 
 (defwidget metric [label value tooltip]
   (box :space-evenly false
@@ -81,6 +84,6 @@
     "襤"))
 
 (defwidget time []
-  (box :class "time" :orientation "v"
+  (box :class "time" :orientation "h"
     (box :class "hour" hour)
     (box :class "date" date)))

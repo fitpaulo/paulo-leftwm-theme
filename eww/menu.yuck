@@ -35,7 +35,7 @@
            :onclick "loginctl kill-session $XDG_SESSION_ID"
       "")
       (button :class "powermenu-button"
-           :onclick ""
+           :onclick "slock"
       "")
       (button :class "powermenu-button"
            :onclick "reboot"
