@@ -9,6 +9,10 @@ if [ -f "/tmp/leftwm-theme-down" ]; then
 fi
 ln -s ${SCRIPTPATH}/down /tmp/leftwm-theme-down
 
+# launch protonvpn if available
+if [ -x "$(command -v protonvpn)" ]; then
+  pgrep protonvpn > /dev/null || protonvpn &
+fi
 
 #boot compton or picom if it exists
 if ! pgrep -x "picom" > /dev/null
@@ -42,11 +46,6 @@ fi
 # launch network-manager applet, but only if it's not already running
 if [ -x "$(command -v nm-applet)" ]; then
   pgrep nm-applet > /dev/null || nm-applet &
-fi
-
-# launch protonvpn if available
-if [ -x "$(command -v protonvpn)" ]; then
-  pgrep protonvpn > /dev/null || protonvpn &
 fi
 
 # launch synergy if available
