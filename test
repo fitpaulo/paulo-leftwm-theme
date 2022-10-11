@@ -1,7 +1,0 @@
-#!/bin/bash
-
-# launch protonvpn if available
-if [ -x "$(command -v prontonvpn)" ]; then
-  echo "Yep"
-  pgrep protonvpn > /dev/null || protonvpn &
-fi
