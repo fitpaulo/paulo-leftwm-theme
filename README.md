@@ -1,29 +1,51 @@
-# LeftWM themes - arch-one-dark
+# LeftWM themes - paulotech
 
-![](https://github.com/jamesbaker1901/leftwm-arch-one-dark/blob/main/screenshot.png?raw=true)
+This is a my take on a one-dark theme with influences by many other authors of different components.
 
-A simple polybar theme for leftwm based on the one-dark color scheme.
+Currently the left side of polybar is not clickable.  Also, it is not displaying the current Layout.
 
-Also included is my alacritty config with [one-dark colors](https://github.com/eendroroy/alacritty-theme/blob/master/themes/one_dark.yaml) and BlexMono Nerd Font (included and installed by the theme).
+I don't include install eww below as I'm not actually using it currently.
+
+I recommed using up.polybar ```ln -s up.polybar up```
+
+TODO:
+  * Update polybar to display current layout
+  * Update polybar to include applications on the left (maybe)
+  * Make Tags clickable (maybe)
+  * Make an eww Power Menu
 
 ## Requirements
 * [picom](https://wiki.archlinux.org/title/picom)
 * [dunst](https://wiki.archlinux.org/title/dunst)
 * [polybar](https://wiki.archlinux.org/title/Polybar)
-* [playerctl](https://man.archlinux.org/man/community/playerctl/playerctl.1.en)
-* [spotify (AUR)](https://aur.archlinux.org/packages/spotify)
 
-Install them with:
+Install them with (Arch):
 ```
-$ sudo pacman -S picom dunst polybar playerctl
-
-# you can build the spotify package from the AUR manually, or just use an AUR helper like yay
-
-$ yay -S spotify
+paru picom dunst polybar
 ```
 
+Install them with (Fedora):
+```
+sudo dnf install picom dunst polybar
+```
+
+Install them with (Debian/Ubuntu):
+Note: This is a guess, I have not set this up on Ubuntu/Debian
+```
+sudo nala install picom dunst polybar
+```
+
+If you don't have nala
+```
+sudo apt install nala
+```  
 
 ### Credit
-This theme was initially a fork of the lovely port of [Forest](https://github.com/lex148/forest) to leftwm by [lex148](https://github.com/lex148), which in turn was heavily influenced by the great theme forest over at [adi1090x / polybar-themes](https://github.com/adi1090x/polybar-themes).
+This theme was originally adapted from [Arch One Dark](https://github.com/jamesbaker1901/leftwm-arch-one-dark)
 
-The main similarities lie in the polybar config. I changed it quite a bit to achieve the look and feel I wanted, but it's still largely based on what [lex148](https://github.com/lex148) ported from [adi1090x / polybar-themes](https://github.com/adi1090x/polybar-themes).
+The picom config for rounded corners came from [Gruvbox Material Rounded](https://github.com/niconicoj/Leftwm-Gruvbox-Material-Rounded)
+This is also where the polybar config comes from.
+
+The Eww stuff comes directly from [Arcofancy Fancy](https://github.com/arcolinux/arcolinux-leftwm-theme-fancy)
+
+There are numerous dotfiles that I grabbed from various folks to set up dunst and similar as well.
