@@ -1,11 +1,11 @@
 {% for tag in workspace.tags %}
 {% if tag.mine %}
 %{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}
-%{T1}%{F#BA68C8}{{tag.name}}%{F#89b482}· %{F-}
+%{T1}%{F#BA68C8}{{tag.name}}· %{F-}
 %{A}
 {% elsif tag.visible  %}
 %{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}
-%{T1}%{F#56b6c2}{{tag.name}}%{F#56b6c2}· %{F-}
+%{T1}%{F#56b6c2}{{tag.name}}· %{F-}
 %{A}
 {% elsif tag.busy  %}
 %{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}

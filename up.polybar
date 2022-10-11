@@ -24,7 +24,7 @@ leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
 #set background
 if [ -x "$(command -v feh)" ]; then
   #feh --bg-scale --randomize ~/Pictures/wallpapers/halloween/*
-  feh --bg-scale --randomize ~/Pictures/Wallpapers/Everyday/*
+  feh --bg-scale --randomize ~/.local/share/wallpapers/everyday/
 fi
 
 # extra utils to make this theme a little more homey
