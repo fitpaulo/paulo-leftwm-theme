@@ -12,8 +12,6 @@ TODO:
   * Update polybar to include application launcher like the arch one dark theme (maybe)
   * Make an eww Power Menu
   * Add rofi config to theme
-  * Change tag names to something fun like greek letters (ala garuda linux qtile config)
-    * This probably belongs in the main leftwm README
 
 ## Requirements
 * [picom](https://wiki.archlinux.org/title/picom)
