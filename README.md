@@ -4,10 +4,15 @@ This is a my take on a one-dark theme with influences by many other authors of d
 
 Currently the left side of polybar is not clickable.  Also, it is not displaying the current Layout.
 
+I don't include install eww below as I'm not actually using it currently.
+
+I recommed using up.polybar ```ln -s up.polybar up```
+
 TODO:
   * Update polybar to display current layout
   * Update polybar to include applications on the left (maybe)
   * Make Tags clickable (maybe)
+  * Make an eww Power Menu
 
 ## Requirements
 * [picom](https://wiki.archlinux.org/title/picom)
@@ -40,5 +45,7 @@ This theme was originally adapted from [Arch One Dark](https://github.com/jamesb
 
 The picom config for rounded corners came from [Gruvbox Material Rounded](https://github.com/niconicoj/Leftwm-Gruvbox-Material-Rounded)
 This is also where the polybar config comes from.
+
+The Eww stuff comes directly from [Arcofancy Fancy](https://github.com/arcolinux/arcolinux-leftwm-theme-fancy)
 
 There are numerous dotfiles that I grabbed from various folks to set up dunst and similar as well.
