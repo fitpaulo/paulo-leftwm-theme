@@ -1,19 +1,22 @@
+{% assign primary = "#57d1ea" %}
+{% assign secondary = "#9c64fe" %}
+
 {% for tag in workspace.tags %}
 {% if tag.mine %}
 %{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}
-%{T1}%{F#BA68C8}{{tag.name}}· %{F-}
+%{T1}%{F{{ primary }}}{{tag.name}}· %{F-}
 %{A}
 {% elsif tag.visible  %}
 %{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}
-%{T1}%{F#56b6c2}{{tag.name}}· %{F-}
+%{T1}%{F{{ secondary }}}{{tag.name}}· %{F-}
 %{A}
 {% elsif tag.busy  %}
 %{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}
-%{T1}%{F#56b6c2}{{tag.name}}· %{F-}
+%{T1}%{F{{ secondary }}}{{tag.name}}· %{F-}
 %{A}
 {% else tag.visible  %}
 %{A1:$SCRIPTPATH/change_to_tag {{workspace.index}} {{tag.index}}:}
-%{F#56b6c2}%{T1}{{tag.name}}  %{F-}
+%{F{{ secondary }}}%{T1}{{tag.name}}  %{F-}
 %{A}
 {% endif %}
 {% endfor %}
