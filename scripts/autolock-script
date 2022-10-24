@@ -1,0 +1,33 @@
+#!/bin/bash
+
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+
+time=15 # minutes
+locker=i3lock
+lockerImg="$SCRIPTPATH/../images/lock.png"
+notify=60 # seconds
+u=critical
+t=10000  # miliseconds
+
+if [ ! -x $(command -v xautolock) ]; then
+    echo "xautolock not found, make sure it is installed"
+    exit 1
+fi
+
+if [ ! -x $(command -v "$locker") ]; then
+    echo "$locker not found, make sure it is installed"
+    exit 1
+fi
+
+if [ -f "$lockerImg" ]; then
+    xautolock -time "$time" \
+	    -locker "$locker -i $lockerImg" \
+	    -notify "$notify" \
+	    -notifier "notify-send -u $u -t $t -- \"LOCKING SCREEN IN $notify SECONDS\""
+else
+    xautolock -time "$time" \
+	    -locker "$locker" \
+	    -notify "$notify" \
+	    -notifier "notify-send -u $u -t $t -- \"LOCKING SCREEN IN $notify SECONDS\""
+fi
+

@@ -29,13 +29,16 @@ fi
 leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
 
 #set background
-run feh --bg-scale --randomize ~/.local/share/wallpapers/everyday/pixel_city.png
+run feh --bg-scale --randomize ~/.local/share/wallpapers/everyday
+
+#start the autolocker
+run ./scripts/autolock-script
 
 # extra utils to make this theme a little more homey
 run dunst -config ~/.config/dunst/dunstrc &
 
 # launch protonvpn if available
-run protonvpn &
+run protonvpn-cli c -f # safe to call over and over
 
 # launch file manager if available
 run pcmanfm -d & 
@@ -55,7 +58,7 @@ run synergy &
 run clipit &
 
 # Screenshot tool
-run flatpak run org.flameshot.Flameshot &
+run flameshot &
 
 #boot  polybar
 index=0
