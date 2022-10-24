@@ -32,7 +32,7 @@ leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
 run feh --bg-scale --randomize ~/.local/share/wallpapers/everyday
 
 #start the autolocker
-run ./scripts/autolock-script
+run "$SCRIPTPATH"/scripts/autolock-script
 
 # extra utils to make this theme a little more homey
 run dunst -config ~/.config/dunst/dunstrc &
