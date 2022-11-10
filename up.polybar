@@ -29,7 +29,7 @@ fi
 leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
 
 #set background
-run feh --bg-scale --randomize ~/.local/share/wallpapers/everyday
+run feh --bg-scale --randomize "$SCRIPTPATH/images/wallpapers"
 
 #start the autolocker
 run "$SCRIPTPATH"/scripts/autolock-script
@@ -42,6 +42,9 @@ run protonvpn-cli c -f # safe to call over and over
 
 # launch file manager if available
 run pcmanfm -d & 
+
+# Start a session
+run lxsession &
 
 # set up autolock if it is available
 # if [ -x "$(command -v xautolock)" ]; then
@@ -59,6 +62,9 @@ run clipit &
 
 # Screenshot tool
 run flameshot &
+
+# PA Sys Tray
+run pasystray &
 
 #boot  polybar
 index=0

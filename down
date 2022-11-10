@@ -4,9 +4,14 @@ SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 leftwm-command "UnloadTheme"
 
-pkill picom
-pkill polybar
-pkill dunst
-pkill eww
+killall picom
+killall polybar
+killall dunst
+killall eww
+killall clipit
+killall flameshot
+killall pamac
+killall pasystray
+killall protonvpn
 
 kill $(ps aux | grep "layout.sh" | grep -v grep | awk '{print $2}')
