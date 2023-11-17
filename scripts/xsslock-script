@@ -1,0 +1,23 @@
+#!/bin/bash
+
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+
+locker=i3lock
+lockerImg="$SCRIPTPATH/../images/lock.png"
+
+if [ ! -x $(command -v xss-lock ) ]; then
+    echo "xautolock not found, make sure it is installed"
+    exit 1
+fi
+
+if [ ! -x $(command -v "$locker") ]; then
+    echo "$locker not found, make sure it is installed"
+    exit 1
+fi
+
+if [ -f "$lockerImg" ]; then
+    xss-lock -- "$locker" -n -i "$lockerImg" &
+else
+    xss-lock -- "$locker" -n &
+fi
+

@@ -12,6 +12,10 @@ killall clipit
 killall flameshot
 killall pamac
 killall pasystray
-killall protonvpn
+killall dolphin
+killall protonvpn-app
+killall pcmanfm
+killall xautolock
+killall xss-lock
 
 kill $(ps aux | grep "layout.sh" | grep -v grep | awk '{print $2}')
