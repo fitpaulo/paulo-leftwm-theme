@@ -19,10 +19,10 @@ run () {
 #boot compton or picom if it exists
 if ! pgrep -x "picom" > /dev/null
 then
-    nohup picom --experimental-backends --config "$SCRIPTPATH"/picom/picom.conf > /dev/null 2>&1 &
+    nohup picom --config "$SCRIPTPATH"/picom/picom.conf > /dev/null 2>&1 &
 else
     pkill picom
-    nohup picom --experimental-backends --config "$SCRIPTPATH"/picom/picom.conf > /dev/null 2>&1 &
+    nohup picom --config "$SCRIPTPATH"/picom/picom.conf > /dev/null 2>&1 &
 fi
 
 #set the theme.ron config
@@ -34,37 +34,43 @@ run feh --bg-scale --randomize "$SCRIPTPATH/images/wallpapers"
 #start the autolocker
 run "$SCRIPTPATH"/scripts/autolock-script
 
+# Start xss-lock to lock on system suspend
+run "$SCRIPTPATH"/scripts/xsslock-script
+
+# PA Sys Tray
+run pasystray &
+
 # extra utils to make this theme a little more homey
 run dunst -config ~/.config/dunst/dunstrc &
+
+# Something is causing the mouse to map lefthanded, possibly something in kde, though plasma works fine //shrug
+# run xmodmap -e "pointer = 1 2 3"
+run "$SCRIPTPATH"/scripts/xmodmap-script
 
 # launch protonvpn if available
 run protonvpn-cli c -f # safe to call over and over
 
+# We want the kde/gnome polkit auth agent running for mounting hd and stuff
+# run /usr/libexec/kf5/polkit-kde-authentication-agent-1 &
+run /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
 # launch file manager if available
-run pcmanfm -d & 
-
-# Start a session
-run lxsession &
-
-# set up autolock if it is available
-# if [ -x "$(command -v xautolock)" ]; then
-#   xautolock -time 15 -locker slock
-# fi
+# run dolphin --daemon & 
+run pcmanfm -d &
+# run thunar --daemon &
 
 # launch network-manager applet, but only if it's not already running
-run nm-applet &
+# This is needed for vpn
+run nm-applet --indicator &
 
 # launch synergy if available
-run synergy &
+# run synergy &
 
 # Clipboard manager
 run clipit &
 
 # Screenshot tool
 run flameshot &
-
-# PA Sys Tray
-run pasystray &
 
 #boot  polybar
 index=0
