@@ -34,11 +34,6 @@ Note: This is a guess, I have not set this up on Ubuntu/Debian
 sudo nala install picom dunst polybar
 ```
 
-If you don't have nala
-```
-sudo apt install nala  # Thank me later
-```  
-
 ### Credit
 This theme was originally adapted from [Arch One Dark](https://github.com/jamesbaker1901/leftwm-arch-one-dark)
 
