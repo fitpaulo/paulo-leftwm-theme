@@ -20,7 +20,7 @@ TODO:
 
 Install them with (Arch):
 ```
-paru picom dunst polybar
+paru -Sy picom dunst polybar
 ```
 
 Install them with (Fedora):
