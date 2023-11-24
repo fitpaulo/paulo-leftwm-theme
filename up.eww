@@ -1,7 +1,6 @@
 #!/bin/bash
 export SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
-
 #down the last running theme
 if [ -f "/tmp/leftwm-theme-down" ]; then
     /tmp/leftwm-theme-down
@@ -9,50 +8,69 @@ if [ -f "/tmp/leftwm-theme-down" ]; then
 fi
 ln -s ${SCRIPTPATH}/down /tmp/leftwm-theme-down
 
+run () {
+    if [ -x $(command -v "$1") ]; then
+        if ! pgrep $1; then
+            $@&
+        fi
+    fi
+}
 
 #boot compton or picom if it exists
 if ! pgrep -x "picom" > /dev/null
 then
-    nohup picom --experimental-backends --config "$SCRIPTPATH"/picom/picom.conf > /dev/null 2>&1 &
+    nohup picom --config "$SCRIPTPATH"/picom/picom.conf > /dev/null 2>&1 &
 else
     pkill picom
-    nohup picom --experimental-backends --config "$SCRIPTPATH"/picom/picom.conf > /dev/null 2>&1 &
+    nohup picom --config "$SCRIPTPATH"/picom/picom.conf > /dev/null 2>&1 &
 fi
 
 #set the theme.ron config
 leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
 
-
 #set background
-if [ -x "$(command -v feh)" ]; then
-  #feh --bg-scale --randomize ~/Pictures/wallpapers/halloween/*
-  feh --bg-scale --randomize ~/Pictures/Wallpapers/Everyday/*
-fi
+run feh --bg-scale --randomize "$SCRIPTPATH/images/wallpapers"
+
+#start the autolocker
+run "$SCRIPTPATH"/scripts/autolock-script
+
+# Start xss-lock to lock on system suspend
+run "$SCRIPTPATH"/scripts/xsslock-script
+
+# PA Sys Tray
+run pasystray &
 
 # extra utils to make this theme a little more homey
-if [ -x "$(command -v dunst)" ]; then
-  dunst -config ~/.config/dunst/dunstrc &
-fi
+run dunst -config ~/.config/dunst/dunstrc &
 
-# set up autolock if it is available
-# if [ -x "$(command -v xautolock)" ]; then
-#   xautolock -time 15 -locker slock
-# fi
-
-# launch network-manager applet, but only if it's not already running
-if [ -x "$(command -v nm-applet)" ]; then
-  pgrep nm-applet > /dev/null || nm-applet &
-fi
+# Something is causing the mouse to map lefthanded, possibly something in kde, though plasma works fine //shrug
+# run xmodmap -e "pointer = 1 2 3"
+run "$SCRIPTPATH"/scripts/xmodmap-script
 
 # launch protonvpn if available
-if [ -x "$(command -v protonvpn)" ]; then
-  pgrep protonvpn > /dev/null || protonvpn &
-fi
+run protonvpn-cli c -f # safe to call over and over
+
+# We want the kde/gnome polkit auth agent running for mounting hd and stuff
+# run /usr/libexec/kf5/polkit-kde-authentication-agent-1 &
+run /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+# launch file manager if available
+# run dolphin --daemon & 
+run pcmanfm -d &
+# run thunar --daemon &
+
+# launch network-manager applet, but only if it's not already running
+# This is needed for vpn
+run nm-applet --indicator &
 
 # launch synergy if available
-if [ -x "$(command -v synergy)" ]; then
-  pgrep synergy > /dev/null || synergy &
-fi
+# run synergy &
+
+# Clipboard manager
+run clipit &
+
+# Screenshot tool
+run flameshot &
 
 # EWW
 eww daemon
