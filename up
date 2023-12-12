@@ -45,7 +45,7 @@ run dunst -config ~/.config/dunst/dunstrc &
 
 # Something is causing the mouse to map lefthanded, possibly something in kde, though plasma works fine //shrug
 # run xmodmap -e "pointer = 1 2 3"
-run "$SCRIPTPATH"/scripts/xmodmap-script
+# run "$SCRIPTPATH"/scripts/xmodmap-script
 
 # launch protonvpn if available
 run protonvpn-cli c -f # safe to call over and over
@@ -54,10 +54,8 @@ run protonvpn-cli c -f # safe to call over and over
 # run /usr/libexec/kf5/polkit-kde-authentication-agent-1 &
 run /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
-# launch file manager if available
-# run dolphin --daemon & 
-run pcmanfm -d &
-# run thunar --daemon &
+# Clipboard manager
+clipcatd
 
 # launch network-manager applet, but only if it's not already running
 # This is needed for vpn
@@ -65,9 +63,6 @@ run nm-applet --indicator &
 
 # launch synergy if available
 # run synergy &
-
-# Clipboard manager
-run clipit &
 
 # Screenshot tool
 run flameshot &

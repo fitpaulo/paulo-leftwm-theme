@@ -17,5 +17,6 @@ killall protonvpn-app
 killall pcmanfm
 killall xautolock
 killall xss-lock
+killall clipcatd
 
 kill $(ps aux | grep "layout.sh" | grep -v grep | awk '{print $2}')
