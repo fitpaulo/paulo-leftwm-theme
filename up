@@ -55,7 +55,7 @@ run protonvpn-cli c -f # safe to call over and over
 run /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # Clipboard manager
-clipcatd
+parcellite
 
 # launch network-manager applet, but only if it's not already running
 # This is needed for vpn

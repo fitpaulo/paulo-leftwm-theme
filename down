@@ -7,16 +7,12 @@ leftwm-command "UnloadTheme"
 killall picom
 killall polybar
 killall dunst
-killall eww
-killall clipit
 killall flameshot
 killall pamac
 killall pasystray
-killall dolphin
 killall protonvpn-app
-killall pcmanfm
 killall xautolock
 killall xss-lock
-killall clipcatd
+killall parcellite
 
 kill $(ps aux | grep "layout.sh" | grep -v grep | awk '{print $2}')
