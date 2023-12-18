@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 
 time=15 # minutes
@@ -30,4 +31,3 @@ else
 	    -notify "$notify" \
 	    -notifier "notify-send -u $u -t $t -- \"LOCKING SCREEN IN $notify SECONDS\""
 fi
-
