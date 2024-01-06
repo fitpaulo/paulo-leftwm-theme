@@ -50,7 +50,7 @@ run dunst -config ~/.config/dunst/dunstrc
 # run "$SCRIPTPATH"/scripts/xmodmap-script
 
 # launch protonvpn if available
-run protonvpn-cli c -f # safe to call over and over
+# run protonvpn-cli c -f # safe to call over and over
 
 # We want the kde/gnome polkit auth agent running for mounting hd and stuff
 # run /usr/libexec/kf5/polkit-kde-authentication-agent-1 &
