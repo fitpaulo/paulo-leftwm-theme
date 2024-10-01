@@ -53,11 +53,11 @@ run dunst -config ~/.config/dunst/dunstrc
 # run protonvpn-cli c -f # safe to call over and over
 
 # We want the kde/gnome polkit auth agent running for mounting hd and stuff
-run /usr/libexec/kf5/polkit-kde-authentication-agent-1
-# run /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# run /usr/libexec/kf5/polkit-kde-authentication-agent-1
+run /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
 # Clipboard manager
-run parcellite
+run clipman
 
 # launch network-manager applet, but only if it's not already running
 # This is needed for vpn
