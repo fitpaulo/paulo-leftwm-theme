@@ -28,10 +28,6 @@ else
     nohup picom --config "$picompath/picom.conf" > /dev/null 2>&1 &
 fi
 
-# Align DPMS and screensaver to 15 minutes
-xset s 900
-xset dpms 900 900 900
-
 # Run xidlehook
 if [ -x "$(command -v xidlehook)" ]; then
     if  pgrep xidlehook; then
@@ -44,9 +40,7 @@ if [ -x "$(command -v xidlehook)" ]; then
       --not-when-audio \
       --not-when-fullscreen \
       --timer 900 'i3lock -i /home/paulo/src/paulo-leftwm-theme/images/lock.png' '' \
-      --timer 60 'notify-send -u critical -t 10000 "LOCKING SCREEN IN 60 SECONDS"' '' \
-      --timer 900 'xset s off && xset -dpms' '' \
-      --timer 901 'xset s on && xset +dpms' '' &
+      --timer 60 'notify-send -u critical -t 10000 "LOCKING SCREEN IN 60 SECONDS"' '' &
 fi
 
 #set the theme.ron config
