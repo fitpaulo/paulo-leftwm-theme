@@ -5,7 +5,7 @@ SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 leftwm-command "UnloadTheme"
 
 killall picom
-killall polybar
+killall sxhkd
 killall dunst
 killall flameshot
 killall pamac
@@ -14,5 +14,8 @@ killall protonvpn-app
 killall xautolock
 killall xss-lock
 killall parcellite
+killall caffeine-ng
+killall polybar
 
-kill $(ps aux | grep "layout.sh" | grep -v grep | awk '{print $2}')
+# This script is part of polybar, but it doesn't seem to be continuously running
+# kill $(ps aux | grep "layout.sh" | grep -v grep | awk '{print $2}')

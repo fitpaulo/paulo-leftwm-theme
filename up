@@ -49,8 +49,14 @@ leftwm-command "LoadTheme $SCRIPTPATH/theme.ron"
 #set background
 run feh --bg-scale --randomize "$SCRIPTPATH/images/wallpapers"
 
+# Extra coolguyness with hotkeys moved out of the WM
+run sxhkd
+
 # PA Sys Tray
 run pasystray
+
+# Proton Vpn Systray
+run protonvpn-applet
 
 # extra utils to make this theme a little more homey
 run dunst -config ~/.config/dunst/dunstrc
@@ -65,6 +71,9 @@ run parcellite
 # launch network-manager applet, but only if it's not already running
 # This is needed for vpn
 run nm-applet --indicator
+
+# Add caffeine
+run caffeine
 
 # Screenshot tool
 run flameshot
