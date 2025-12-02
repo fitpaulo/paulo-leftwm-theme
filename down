@@ -8,7 +8,6 @@ killall picom
 killall sxhkd
 killall dunst
 killall flameshot
-killall pamac
 killall pasystray
 killall protonvpn-app
 killall xautolock
