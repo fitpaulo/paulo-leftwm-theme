@@ -15,6 +15,7 @@ killall xss-lock
 killall parcellite
 killall caffeine-ng
 killall polybar
+killall blueman-applet
 
 # This script is part of polybar, but it doesn't seem to be continuously running
 # kill $(ps aux | grep "layout.sh" | grep -v grep | awk '{print $2}')

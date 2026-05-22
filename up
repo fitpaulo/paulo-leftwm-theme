@@ -3,6 +3,10 @@ export SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 home=/home/paulo
 picompath="$home/.config/picom"
 
+# Load fcitx5 IME environment vars (for Japanese/Mozc input). Mirrors your Hypr config.
+# This ensures Ctrl+Space toggle works properly under LeftWM/X11.
+[ -f "$HOME/.xprofile" ] && . "$HOME/.xprofile"
+
 #down the last running theme
 if [ -f "/tmp/leftwm-theme-down" ]; then
     /tmp/leftwm-theme-down
@@ -68,12 +72,12 @@ run /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # Clipboard manager
 run parcellite
 
+# Blueman applet
+run blueman-applet
+
 # launch network-manager applet, but only if it's not already running
 # This is needed for vpn
 run nm-applet --indicator
-
-# Add caffeine
-run caffeine
 
 # Screenshot tool
 run flameshot
